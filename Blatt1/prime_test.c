@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-//function to check weather given integer is prime (only to be used with small numbers)
+//function to check wether given integer is prime (only to be used with small numbers)
 int prime_test(int n) {
 	if(n<0) { //check if given integer is negative
 		printf("number has to be positive\n");
