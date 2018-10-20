@@ -7,15 +7,15 @@ int prime_test(int n) {
 		printf("number has to be positive\n");
 		return 0;
 	}
-	
+
 	if(n<2) return 0; //0 and 1 are not prime
-	
+
 	int* array = malloc((n+1)*sizeof(int)); //create a boolean array representing each number from 0 to n
 
 	for(int i=0; i<=n; i++) {
 		array[i]=1;
 	}
-	
+
 	for(int i=2; i*i<=n; i++) { //go through numbers from 2 to sqrareroot of namespace
 		if(array[i]==1) { //if number is still marked as prime
 			for(int j=2; j*i<=n; j++) {
@@ -28,14 +28,32 @@ int prime_test(int n) {
 	return result;
 }
 
+/* function without array */
+int prime_test_2(int n) {
+	if (n < 0) {
+		return -1;
+	} else if (n < 2) {
+		return 0;
+	} else if (n == 2) {
+		return 1;
+	} else if (n%2 == 0) {
+		return 0;
+	}
 
+	for (int i = 3; i*i<=n; i+=2) {
+		if (n % i == 0) {
+			return 0;
+		}
+	}
 
+	return 1;
+}
 
 int main() {
 	int n;
 	printf("enter number you want to check\n");
 	scanf("%i", &n);
-	
+
 	if(prime_test(n)==1) printf("%i is prime\n", n);
 	else printf("%i is not prime\n", n);
 	return 0;
