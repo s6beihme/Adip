@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-//function to check wether given integer is prime (only to be used with small numbers)
+//function to check whether given integer is prime (only to be used with small numbers)
 int prime_test(int n) {
 	if(n<0) { //check if given integer is negative
 		printf("number has to be positive\n");
@@ -31,6 +31,7 @@ int prime_test(int n) {
 /* function without array */
 int prime_test_2(int n) {
 	if (n < 0) {
+		printf("Number has to be positive\n");
 		return -1;
 	} else if (n < 2) {
 		return 0;
@@ -40,7 +41,7 @@ int prime_test_2(int n) {
 		return 0;
 	}
 
-	for (int i = 3; i*i<=n; i+=2) {
+	for (unsigned long long int i = 3; i*i<=n; i+=2) {
 		if (n % i == 0) {
 			return 0;
 		}
