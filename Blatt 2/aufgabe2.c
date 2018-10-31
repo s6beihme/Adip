@@ -5,7 +5,9 @@
 
 // very inefficient recursive version
 unsigned long long int fibRec(unsigned long int n) {
-  if (n==0 || n==1) {
+  if (n==0) {
+    return 0;
+  } else if (n==1) {
     return 1;
   } else {
     return fibRec(n-1)+fibRec(n-2);
@@ -15,7 +17,7 @@ unsigned long long int fibRec(unsigned long int n) {
 // Returns the nth Fibonacci number
 unsigned long long int fib(unsigned long int n) {
   // save fib(n-1) and fib(n-2) in variables
-  unsigned long long int f1 = 1;
+  unsigned long long int f1 = 0;
   unsigned long long int f2 = 1;
   for (unsigned long int i = 1; i<n; i++) {
     f2 = f1+f2;
@@ -77,7 +79,6 @@ void fibSuperLong(unsigned int* res, unsigned long int n) {
   unsigned int f2[SIZE];
   initSuperLong(f1);
   initSuperLong(f2);
-  f1[SIZE-1] = 1;
   f2[SIZE-1] = 1;
   unsigned int tmp[SIZE];
   for (unsigned long int i = 1; i<n; i++) {
