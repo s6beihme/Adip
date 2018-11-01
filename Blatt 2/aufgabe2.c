@@ -54,7 +54,7 @@ void copy(unsigned int* from, unsigned int* to) {
 void printSuperLong(unsigned int* a) {
   int onlyNull = 1;
   for (int i=0; i<SIZE; i++) {
-    if (a[i] == 0) {
+    if (a[i] == 0 && onlyNull && i!=SIZE-1) {
       printf("    ");
     } else if (onlyNull) {
       printf("%4d", a[i]);
@@ -72,8 +72,8 @@ void initSuperLong(unsigned int* a) {
   }
 }
 
-// Calculates the nth Fibonacci number and puts it into the result array
-void fibSuperLong(unsigned int* res, unsigned long int n) {
+// Prints the first 50 even Fibonacci numbers
+void printEven() {
   // save fib(n-1) and fib(n-2) in variables
   unsigned int f1[SIZE];
   unsigned int f2[SIZE];
@@ -81,24 +81,15 @@ void fibSuperLong(unsigned int* res, unsigned long int n) {
   initSuperLong(f2);
   f2[SIZE-1] = 1;
   unsigned int tmp[SIZE];
-  for (unsigned long int i = 1; i<n; i++) {
+  unsigned int found = 0;
+  for (unsigned int i=0; found<50; i++) {
+    if (f1[SIZE-1]%2 == 0) {
+      printSuperLong(f1);
+      found++;
+    }
     copy(f2, tmp);
     add(f2, f1);
     copy(tmp, f1);
-  }
-  copy(f2, res);
-}
-
-// Prints the first 50 even Fibonacci numbers
-void printEven() {
-  unsigned int res[SIZE];
-  unsigned int found = 0;
-  for (unsigned int i=0; found<50; i++) {
-    fibSuperLong(res, i);
-    if (res[SIZE-1]%2 == 0) {
-      printSuperLong(res);
-      found++;
-    }
   }
 }
 
