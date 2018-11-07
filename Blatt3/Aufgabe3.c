@@ -2,7 +2,7 @@
 
 void einser(int i) {
 	switch(i) {
-		case 0: 
+		case 0: return;
 		case 1: {printf("ein und ");return;}
 		case 2: {printf("zwie und ");  return;    }
 		case 3: {printf("drei und ");  return;    }
@@ -30,8 +30,8 @@ void zehner(int i) {
 
 int main() {
 	int n=0;
-	printf("gib eine zahl von 20 bis 69 ein\n");
 	do {
+		printf("gib eine zahl von 20 bis 69 ein\n");
 		scanf("%i",&n);
 	}while(20>n || 69<n);
 	einser(n%10);
