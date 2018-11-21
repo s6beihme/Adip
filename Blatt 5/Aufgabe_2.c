@@ -25,6 +25,11 @@ int init_dyn_array(DynArray* a) {
 	return 1;
 }
 
+void free_dyn_array(DynArray *a) {
+	free((*a)->data);
+	free(*a);
+}
+
 void dyn_array_add(DynArray a, int n) {
 	if (a->cur_size < a->max_size) {
 		a->data[a->cur_size] = n;
@@ -81,6 +86,11 @@ int init_dyn_array_min(DynArrayMin* a) {
 	return 1;
 }
 
+void free_dyn_array_min(DynArrayMin *a) {
+	free((*a)->data);
+	free(*a);
+}
+
 void dyn_array_min_add(DynArrayMin a, int n) {
 	if (a->cur_size == 0) {
 		a->data[a->cur_size] = n;
@@ -97,7 +107,7 @@ void dyn_array_min_add(DynArrayMin a, int n) {
 		a->data[a->cur_size] = n;
 		a->cur_size++;
 	}
-	
+
 }
 
 void dyn_array_min_print(DynArrayMin a) {
@@ -125,6 +135,7 @@ int main() {
 	}
 	dyn_array_print(a);
 	printf("\nmax size%i\n", a->max_size);
+	free_dyn_array(&a);
 
 	DynArrayMin b = NULL;
 	if (init_dyn_array_min(&b) == 0) {
@@ -138,4 +149,5 @@ int main() {
 	}
 	dyn_array_min_print(b);
 	printf("\nb cur size: %i", b->cur_size);
+	free_dyn_array_min(&b);
 }

@@ -3,7 +3,7 @@
 
 char* turn_word(char* word, int size) {
 	char* turned = malloc(size * sizeof(char));
-	
+
 	if (turned == NULL) {
 		printf("turn word failed!\n");
 		return NULL;
@@ -19,6 +19,7 @@ int is_palindrome(char* word, int size) {
 	for (int i = 0; i < size; i++) {
 		if (word[i] != turned[i]) return 0;
 	}
+	free(turned);
 	return 1;
 }
 
